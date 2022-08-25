@@ -170,3 +170,32 @@ upload_to_bucket('test_file.csv',file_path, 'sparrks-infra')
 # download_file_from_bucket('test_file.csv', os.path.join(root, 'test-file.csv'), 'sparrks-infra')
 
 
+
+
+# write into bigquery
+from google.cloud import bigquery
+client = bigquery.Client()
+project = client.project
+
+
+table_ref = client.dataset('crm_data').table('pipedrive_deals_data')
+
+
+table = client.get_table(table_ref)
+
+rows_to_insert = [(1, 66, u'Cara Care Rollout Deal', 11000, u'EUR', u'open', 1, '2021-05-17', 
+                  '2021-05-17', 'Nicolas Stephan', 12186948, 'Yoanna', 12162441, 'Nicolas Stephan', 'nicolas.stephan@sparrks.de',
+                   'HiDoc Technologies GmbH (Cara Care)', 2, "Torstraße 59, 10119 Berlin, Deutschland", 'sparrks@pipedrivemail.com')]
+
+
+try:
+    client.insert_rows(table, rows_to_insert)
+    print('True')
+except Exception as e:
+    print(e)
+
+
+
+
+
+

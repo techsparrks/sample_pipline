@@ -152,5 +152,8 @@ util.ini
 
 #cloud secret key
 data-analytics*.json
+
+#data files
+*.csv
 """
 )
