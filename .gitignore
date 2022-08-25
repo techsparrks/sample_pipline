@@ -149,5 +149,8 @@ cython_debug/
 # config file
 config.ini
 util.ini
+
+#cloud secret key
+data-analytics*.json
 """
 )
