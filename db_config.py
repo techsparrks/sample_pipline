@@ -10,3 +10,7 @@ SQA_CONN_PUB_ENGINE = sqlalchemy.create_engine(SQA_CONN_STR)
 SQA_CONN_PUB = SQA_CONN_PUB_ENGINE.connect()
 
 COMPANIES_TABLE = 'companies'
+
+query_get_companies_from_db = '''select *
+from companies
+'''
