@@ -1,6 +1,6 @@
 import pandas as pd
 from hubspot import HubSpot
-from config import HUBSPOT_ACCESS_TOKEN
+from access_token_config import HUBSPOT_ACCESS_TOKEN
 from db_config import SQA_CONN_PUB
 
 # initialize the api client & send request to get all companies
