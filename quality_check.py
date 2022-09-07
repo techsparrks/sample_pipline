@@ -14,7 +14,8 @@ def passed_quality_check(database_df, final_df, start_date, end_date):
 def select_new_data(sqa_con, final_df, start_date, end_date):
     database_df = pd.read_sql(query_get_companies_from_db, con=sqa_con)
     if passed_quality_check(database_df, final_df, start_date, end_date):
-        new_entries_df = database_df.merge(final_df, indicator=True, how='left').loc[lambda x: x['_merge'] == 'right']
+        new_entries_df = database_df.merge(final_df, indicator=True, how='right').loc[lambda x: x['_merge'] == 'right_only']
+        new_entries_df = new_entries_df.drop(columns=['_merge'])
         return new_entries_df
     else:
         return None
